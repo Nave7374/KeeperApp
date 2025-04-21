@@ -6,7 +6,7 @@ import { Notecontext } from "./Context";
 
 function CreateArea(props) {
 
-  const {note , setNote} = useContext(Notecontext);
+  const {note , setNote , isDark} = useContext(Notecontext);
 
   const[isElaborated,setElaborate]=useState(false);
 
@@ -37,7 +37,7 @@ function CreateArea(props) {
 
   return (
     <div >
-      <form className="create-note" onSubmit={hanldeClick}>
+      <form className={isDark?"create-note-dark":"create-note"} onSubmit={hanldeClick}>
         {isElaborated && <input name="title" placeholder="Title" value={note.title} onChange={handleChange} required />}
         <textarea name="content" placeholder="Take a note..." rows={isElaborated ? 3 : 1 } value={note.content} required onClick={handeleloborate} onChange={handleChange} />
         <Zoom in={isElaborated}>

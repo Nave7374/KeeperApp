@@ -5,9 +5,24 @@ import Note from "./Note";
 import { Notecontext } from "./Context";
 import CreateArea from "./CreateArea";
 
-function App(){
+function App(props){
+
+    const body = props.body;
+
+    function setThemeforBody(){
+        console.log(body);
+        if(!isDark){
+            body.classList.remove('body-light')
+            body.classList.add('body-dark')
+        }else {
+            body.classList.remove('body-dark')
+            body.classList.add('body-light')
+        }
+        console.log(body);
+    }
 
     const [notes,setNotes] = useState([]);
+    const [isDark,setDarkTheme] = useState(false);
     const [note,setNote] = useState({
         id:0,
         title:"",
@@ -58,15 +73,15 @@ function App(){
         })
     }
 
-    return <div>
-        <Header />
-        <Notecontext.Provider value={{note , setNote}} >
+    return <div className={isDark?"dark":"light"} style={{minHeight:"100vh"}}>
+        <Notecontext.Provider value={{note , setNote , isDark , setDarkTheme ,setThemeforBody}} >
+            <Header />
             <CreateArea onAdd={addNote} />
-        </Notecontext.Provider>
             {notes.map((note)=>{
                 return <Note key={note.id} id={note.id} oneditnote={handledittext} title={note.title} content={note.content} ondeletenote={deleteNote} />
             })}
-        <Footer />
+            <Footer />
+        </Notecontext.Provider>
     </div>;
 }
 
