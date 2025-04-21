@@ -8,7 +8,7 @@ function Header(){
 
     const {isDark , setDarkTheme , setThemeforBody} = useContext(Notecontext);
     function handleClick(){
-        setDarkTheme(!isDark);
+        setDarkTheme((prev) => !prev);
         setThemeforBody();
     }
     return (

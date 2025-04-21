@@ -10,7 +10,6 @@ function App(props){
     const body = props.body;
 
     function setThemeforBody(){
-        console.log(body);
         if(!isDark){
             body.classList.remove('body-light')
             body.classList.add('body-dark')
@@ -18,16 +17,23 @@ function App(props){
             body.classList.remove('body-dark')
             body.classList.add('body-light')
         }
-        console.log(body);
     }
 
     const [notes,setNotes] = useState([]);
-    const [isDark,setDarkTheme] = useState(false);
+    const [isDark,setDarkTheme] = useState(()=>{
+        const themeStored = localStorage.getItem('theme');
+        return themeStored ? JSON.parse(themeStored) : false;
+    });
     const [note,setNote] = useState({
         id:0,
         title:"",
         content:""
       })
+
+      useEffect(()=>{
+        const curr = isDark;
+        localStorage.setItem('theme' , JSON.stringify(curr));
+      },[isDark])
 
     useEffect(()=>{
         const storedNotes = localStorage.getItem('notes');
