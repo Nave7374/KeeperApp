@@ -3,6 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 import { Notecontext } from "./Context";
+import ClearIcon from '@mui/icons-material/Clear';
 
 function CreateArea(props) {
 
@@ -45,6 +46,11 @@ function CreateArea(props) {
             <AddIcon />
           </Fab>
         </Zoom>
+        {/* <Zoom in={isElaborated}>
+          <Fab onClick={handleClear} style={{backgroundColor:"red"}}>
+            <ClearIcon />
+          </Fab>
+        </Zoom> */}
       </form>
     </div>
   );

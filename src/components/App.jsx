@@ -9,6 +9,12 @@ function App(props){
 
     const body = props.body;
 
+    function handleClear(e){
+        e.preventDefault();
+        localStorage.removeItem('notes');
+        setNotes([]);
+      }
+
     function setThemeforBody(){
         if(!isDark){
             body.classList.remove('body-light')
@@ -80,7 +86,7 @@ function App(props){
     }
 
     return <div className={isDark?"dark":"light"} style={{minHeight:"100vh"}}>
-        <Notecontext.Provider value={{note , setNote , isDark , setDarkTheme ,setThemeforBody}} >
+        <Notecontext.Provider value={{note , setNote , isDark , setDarkTheme ,setThemeforBody , handleClear}} >
             <Header />
             <CreateArea onAdd={addNote} />
             {notes.map((note)=>{
