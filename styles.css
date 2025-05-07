@@ -229,4 +229,72 @@
     cursor: pointer;
     outline: none;
   }
+  @media screen and (max-width: 768px) {
+    body, html, #root {
+      overflow-x: hidden;
+    }
+  
+    .header,
+    .header-dark {
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 10px;
+    }
+  
+    .header h1,
+    .header-dark h1 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+  
+    form.create-note,
+    form.create-note-dark {
+      width: 90%;
+      margin: 20px auto;
+      padding: 10px;
+    }
+  
+    .note,
+    .note-dark {
+      width: 90%;
+      margin: 10px auto;
+      float: none;
+    }
+  
+    .note button,
+    .note-dark button {
+      margin-right: 0;
+      width: 32px;
+      height: 32px;
+    }
+  
+    form.create-note input,
+    form.create-note textarea,
+    form.create-note-dark input,
+    form.create-note-dark textarea {
+      font-size: 1em;
+      padding: 6px;
+    }
+  
+    form.create-note button,
+    form.create-note-dark button {
+      width: 32px;
+      height: 32px;
+      right: 12px;
+      bottom: -16px;
+    }
+  
+    .footer,
+    .footer-dark {
+      position: relative;
+      height: auto;
+      padding: 10px 0;
+    }
+  
+    .footer p,
+    .footer-dark p {
+      font-size: 0.9em;
+    }
+  }
   
